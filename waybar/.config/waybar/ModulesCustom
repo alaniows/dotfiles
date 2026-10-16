@@ -1,0 +1,110 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Waybar Modules - Custom Modules */
+/* Basically created to reduce the lines in Waybar Modules bank */
+/* NOTE: This is only for Custom Modules */
+/* Custom Modules like weather browser, tty, file manager at the beginning */
+
+{
+"custom/weather": {
+	"format": "{}",
+	"format-alt": "{alt}: {}",
+	"format-alt-click": "click",
+	"interval": 3600,
+	"return-type": "json",
+	"exec": "$HOME/.config/hypr/UserScripts/Weather.py",
+	//"exec": "$HOME/.config/hypr/UserScripts/Weather.sh",
+	//"exec-if": "ping wttr.in -c1",
+	"tooltip": true,
+},
+
+"custom/file_manager": {
+	"format": "<span font='19' rise='-3500'>󰉋</span>",
+	"on-click": "thunar &",
+	"tooltip": true,
+	"tooltip-format": "File Manager",
+},
+
+"custom/tty": {
+	"format": "<span font='19' rise='-3500'></span>",
+	"on-click": "kitty &",
+	"tooltip": true,
+	"tooltip-format": "Launch Terminal (Kitty)",
+},
+
+"custom/browser": {
+	"format": "<span font='19' rise='-3500'>󰈹</span>",
+	"on-click": "firefox &",
+	"tooltip": true,
+	"tooltip-format": "Launch Browser (Firefox)",
+},
+
+"custom/settings": {
+	"format": "<span font='19' rise='-3500'></span>",
+	"on-click": "$HOME/.config/hypr/scripts/Kool_Quick_Settings.sh",
+	"tooltip": true,
+	"tooltip-format": "Launch KooL Hyprland Settings Menu",
+},
+
+"custom/hint": {
+	"format": "<span font='19' rise='-3500'>󰺁 HINT!</span>",
+	"on-click": "$HOME/.config/hypr/scripts/KeyHints.sh",
+	"on-click-right": "$HOME/.config/hypr/scripts/KeyBinds.sh",
+	"tooltip": true,
+	"tooltip-format": "Left Click: Quick Tips\nRight Click: Keybinds",
+},
+
+"custom/lock": {
+	"format": "<span font='19' rise='-3500'>󰌾</span>",
+	"on-click": "$HOME/.config/hypr/scripts/LockScreen.sh",
+	"tooltip": true,
+	"tooltip-format": "󰷛 Screen Lock",
+},
+
+"custom/menu": {
+	"format": "<span font='19' rise='-3500'>󰄛</span>",
+	"on-click": "pkill fuzzel || fuzzel &",
+	"tooltip": true,
+	"tooltip-format": "Left Click: Fuzzel Menu",
+},
+// This is a custom cava visualizer
+"custom/cava_mviz": {
+	"exec": "$HOME/.config/hypr/scripts/waybarcava.sh",
+	"format": "{}"
+},
+
+"custom/playerctl": {
+	"format": "<span>{}</span>",
+	"return-type": "json",
+	"max-length": 25,
+	"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}}  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+	"on-click-middle": "playerctl play-pause",
+	"on-click": "playerctl previous",
+	"on-click-right": "playerctl next",
+	"scroll-step": 5.0,
+	"on-scroll-up": "$HOME/.config/hypr/scripts/volume.sh --inc",
+	"on-scroll-down": "$HOME/.config/hypr/scripts/volume.sh --dec",
+	"smooth-scrolling-threshold": 1,
+},
+    
+"custom/swaync": {
+	"tooltip": true,
+	"tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
+	"format": "{} {icon} ",
+	"format-icons": {
+		"notification": "<span font='19' rise='-3500'></span>",
+		"none": "<span font='19' rise='-3500'></span>",
+		"dnd-notification": "<span foreground='red'><sup></sup></span>",
+		"dnd-none": "<span font='19' rise='-3500'></span>",
+		"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+		"inhibited-none": "<span font='19' rise='-3500'></span>",
+		"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+		"dnd-inhibited-none": "<span font='19' rise='-3500'></span>"
+	},
+	"return-type": "json",
+	"exec-if": "which swaync-client",
+	"exec": "swaync-client -swb",
+	"on-click": "sleep 0.1 && swaync-client -t -sw",
+	"on-click-right": "swaync-client -d -sw",
+	"escape": true,
+}
+}

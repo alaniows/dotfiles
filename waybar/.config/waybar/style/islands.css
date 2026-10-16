@@ -1,0 +1,191 @@
+@import "/home/alaniows/.cache/wal/colors-waybar.css";
+
+/* Mapeo de variables de Material You a Pywal */
+@define-color secondary @color6;
+@define-color outline @color7;
+@define-color primary @color4;
+@define-color primary_fixed @color5;
+@define-color surface_container rgba(20, 15, 25, 0.65); /* Fondo oscuro translúcido para las cápsulas */
+@define-color inverse_surface @foreground;
+
+* {
+    font-family: "JetBrainsMono Nerd Font Mono", "Symbols Nerd Font", sans-serif;
+    font-weight: bold;
+    min-height: 0;
+    font-size: 12px;
+    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+}
+
+window#waybar,
+window#waybar.empty,
+window#waybar.empty #window {
+    background-color: transparent;
+    padding: 0px;
+    border: 0px;
+    margin-bottom: 3px;
+}
+
+/*-----module groups----*/
+.modules-right, .modules-center, .modules-left {
+    color: @foreground;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+/*-----modules indv----*/
+#taskbar button,
+#workspaces button {
+    color: @color7;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px 6px;
+    border-radius: 12px;
+    margin: 2px 1px;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar button:hover,
+#workspaces button:hover {
+    color: @primary;
+    background-color: alpha(@color2, 0.3);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar button.active,
+#workspaces button.active {
+    color: @background;
+    background-color: @color4; /* Color vivo para el espacio actual */
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#workspaces button.urgent {
+    color: #ff5555;
+    border-radius: 12px;
+}
+
+#custom-swaync,
+#backlight,
+#backlight-slider,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#memory,
+#mode,
+#mpris,
+#network,
+#power-profiles-daemon,
+#pulseaudio,
+#pulseaudio-slider,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#workspaces,
+#custom-backlight,
+#custom-browser,
+#custom-cava_mviz,
+#custom-cycle_wall,
+#custom-dot_update,
+#custom-file_manager,
+#custom-keybinds,
+#custom-keyboard,
+#custom-light_dark,
+#custom-lock,
+#custom-hint,
+#custom-hypridle,
+#custom-menu,
+#custom-playerctl,
+#custom-power_vertical,
+#custom-power,
+#custom-quit,
+#custom-reboot,
+#custom-settings,
+#custom-spotify,
+#custom-tty,
+#custom-updater,
+#custom-weather {
+    background-color: @surface_container;
+    color: @foreground;
+    border: 2px solid alpha(@color4, 0.3); /* Contorno sutil que combina con tu fondo */
+    border-radius: 14px;
+    padding: 4px 8px;
+    margin: 4px 3px;
+    font-size: 11px;
+}
+
+/*-----Indicators----*/
+#custom-hypridle.notactive,
+#idle_inhibitor.activated {
+    color: #39FF14;
+}
+
+#pulseaudio.muted {
+    color: #cc3436;
+}
+
+#temperature.critical {
+    color: #ff5555;
+}
+
+#battery.critical:not(.charging) {
+    color: #ff5555;
+    animation: blink 0.5s alternate infinite;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ff5555;
+        color: #ffffff;
+    }
+}
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
+    background-color: alpha(@color7, 0.2);
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: @color4;
+}
+
+/* ============================================================================= */
+/* CALENDARIO ESTILO MINIMALISTA                                                 */
+/* ============================================================================= */
+
+tooltip {
+    background-color: alpha(@background, 0.95);
+    border: 2px solid alpha(@color4, 0.8);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+tooltip label {
+    color: @foreground;
+}
