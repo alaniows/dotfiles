@@ -2,8 +2,6 @@
 
 Hyprland (Wayland) rice on CachyOS (Arch). Managed with GNU Stow.
 
-![desktop](screenshots/desktop.png)
-
 ## Stack
 Hyprland · Waybar · Kitty · fuzzel · fish · hyprlock
 
