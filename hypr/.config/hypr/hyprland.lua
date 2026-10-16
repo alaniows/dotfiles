@@ -31,9 +31,9 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 -- CAPTURAS DE PANTALLA
 ------------------------------
 hl.bind(mainMod .. " + P",
-  hl.dsp.exec_cmd('grim ~/Imágenes/$(date +%Y-%m-%d_%H-%M-%S).png && wl-copy < ~/Imágenes/$(date +%Y-%m-%d_%H-%M-%S).png'))
+  hl.dsp.exec_cmd('f=~/Imágenes/backupscreenshots/$(date +%Y-%m-%d_%H-%M-%S).png; grim "$f" && wl-copy < "$f"'))
 hl.bind(mainMod .. " + SHIFT + S",
-  hl.dsp.exec_cmd('grim -g "$(slurp)" ~/Imágenes/$(date +%Y-%m-%d_%H-%M-%S).png'))
+  hl.dsp.exec_cmd('grim -g "$(slurp)" ~/Imágenes/backupscreenshots/$(date +%Y-%m-%d_%H-%M-%S).png'))
 
 ------------------------------
 -- WALLPAPER (SUPER + W)
